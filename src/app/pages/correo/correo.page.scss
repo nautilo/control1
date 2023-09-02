@@ -1,0 +1,26 @@
+ion-content{
+    --background: url("../../../assets/img/background.jpg") no-repeat center center / cover;
+}
+ion-toolbar {
+    text-align: center;
+    --ion-toolbar-background: #021E2F;
+}
+ion-card{
+    --background: rgba(0,0,0,0.5);
+}
+ion-button{
+    --background: #F1B634;
+    max-width: 300px;
+    margin-top: 20px;
+}
+.centrar-boton{
+    display:flex;
+    justify-content: center;
+}
+.logo{
+    max-width: 200px;
+}
+.recuperar-contrasena{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
