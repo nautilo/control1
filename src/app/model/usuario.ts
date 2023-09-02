@@ -1,22 +1,22 @@
 export class Usuario {
     public correo: string;
     public password: string;
+    public nombreCompleto: string;
     public preguntaSecreta: string;
     public respuestaSecreta: string;
-    public nombreCompleto: string; // Nuevo atributo
   
     constructor(
       correo: string,
       password: string,
+      nombreCompleto: string,
       preguntaSecreta: string,
       respuestaSecreta: string,
-      nombreCompleto: string, // Nuevo atributo
     ) {
       this.correo = correo;
       this.password = password;
+      this.nombreCompleto = nombreCompleto;
       this.preguntaSecreta = preguntaSecreta;
       this.respuestaSecreta = respuestaSecreta;
-      this.nombreCompleto = nombreCompleto; // Nuevo atributo
     }
   
     public getCorreo(): string {
@@ -36,22 +36,39 @@ export class Usuario {
       const lista = [];
       lista.push(
         new Usuario(
-          'sin.datos@duocuc.cl',
+          'atorres@duocuc.cl',
           '1234',
-          '',
-          '',
-          'Nombre Sin Datos' // Ejemplo de nombre completo
+          'Ana Torres Leiva',
+          'Nombre de su mascota',
+          'gato'
         )
       );
-      // Resto de usuarios...
+      lista.push(
+        new Usuario(
+          'avalenzuela@duocuc.cl',
+          'qwer',
+          'Alberto Valenzuela Nuñez',
+          'Nombre de su mejor amigo',
+          'juanito'
+        )
+      );
+      lista.push(
+        new Usuario(
+          'cfuentes@duocuc.cl',
+          'asdf',
+          'Carla Fuentes González',
+          'Lugar de nacimiento de su madre',
+          'Valparaíso'
+        )
+      );
       return lista;
     }
   
     public buscarUsuarioValido(correo: string, password: string): Usuario | undefined {
-      const nived: Usuario | undefined = this.listaUsuariosValidos().find(
+      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
         (usu) => usu.correo === correo && usu.password === password
       );
-      return nived;
+      return usuario;
     }
   
     public validarCorreo(): string {

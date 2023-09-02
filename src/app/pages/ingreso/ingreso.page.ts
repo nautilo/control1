@@ -78,7 +78,7 @@ export class IngresoPage implements OnInit {
           }
         };
         this.mostrarMensaje(`¡Bienvenido(a) ${usu.nombreCompleto}!`);
-        this.router.navigate(['/home'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
+        this.router.navigate(['/inicio'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
       }
     }
   }
