@@ -45,9 +45,18 @@
       <form>
         <!-- Contenido del card -->
         <ion-card-content>
-          <ion-button class="subirQR" expand="default" fill="clear" shape="round" >
-            Subir imagen QR
+          <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+            <ion-icon slot="start" name="videocam-outline"></ion-icon>
+            Comenzar Escaneo de QR
           </ion-button>
+        
+          <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+            <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+            Detener escaneo de QR
+          </ion-button>
+        
+          <video #video [hidden]="!escaneando" width="100%"></video>
+          <canvas #canvas hidden></canvas>
 
         </ion-card-content>
       </form>
