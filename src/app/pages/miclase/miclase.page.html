@@ -35,7 +35,39 @@
         <ion-label>
           <h1>¡Bienvenido!</h1>
           <br>
-          <h1 *ngIf="usuario">{{ asignatura.sede }}</h1>
+          <h1>{{ asignatura.sede }}</h1>
+          <ion-list>
+            <ion-item>
+              Sede: {{ asignatura.sede }}
+            </ion-item>
+            <ion-item>
+              ID de la Asignatura: {{ asignatura.idAsignatura }}
+            </ion-item>
+            <ion-item>
+              Sección: {{ asignatura.seccion }}
+            </ion-item>
+            <ion-item>
+              Nombre de la Asignatura: {{ asignatura.nombreAsignatura }}
+            </ion-item>
+            <ion-item>
+              Nombre del Profesor: {{ asignatura.nombreProfesor }}
+            </ion-item>
+            <ion-item>
+              Día: {{ asignatura.dia }}
+            </ion-item>
+            <ion-item>
+              Bloque Inicio: {{ asignatura.bloqueInicio }}
+            </ion-item>
+            <ion-item>
+              Bloque Término: {{ asignatura.bloqueTermino }}
+            </ion-item>
+            <ion-item>
+              Hora de Inicio: {{ asignatura.horaInicio }}
+            </ion-item>
+            <ion-item>
+              Hora de Fin: {{ asignatura.horaFin }}
+            </ion-item>
+          </ion-list>
           <br>
           <h2>Escanea el código QR para registrar tu asistencia a clases</h2>
 
