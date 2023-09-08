@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AnimationController} from '@ionic/angular';
-import { Usuario } from 'src/app/model/usuario';
+import { Asignatura } from 'src/app/model/asignatura';
 
 @Component({
   selector: 'app-miclase',
@@ -14,7 +14,7 @@ export class MiclasePage implements OnInit{
 
   //@ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
 
-  public usuario: Usuario;
+  public asignatura: Asignatura;
 
    constructor(
         private activeroute: ActivatedRoute // Permite obtener los parámetros de la página login
@@ -22,7 +22,7 @@ export class MiclasePage implements OnInit{
       , private alertController: AlertController // Permite mostrar mensajes emergentes más complejos que Toast
       , private animationController: AnimationController) { // Permite crear animaciones con  
 
-    this.usuario = new Usuario('', '', '', '', '');
+    this.asignatura = new Asignatura();
 
     // Se llama a la ruta activa y se obtienen sus parámetros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { 
@@ -31,14 +31,15 @@ export class MiclasePage implements OnInit{
       if (nav) {
         // Si tiene datos extra, se rescatan y se asignan a una propiedad
         if (nav.extras.state) {
-          this.usuario = nav.extras.state['usuario'];
+          this.asignatura = nav.extras.state['asignatura'];
+
           return;
         }
       }
-      // Si no vienen datos extra desde la página anterior, quiere decir que el usuario
+      // Si no vienen datos extra desde la página anterior, quiere decir que el asignatura
       // intentó entrar directamente a la página home sin pasar por el login,
       // de modo que el sistema debe enviarlo al login para que inicie sesión.
-      this.router.navigate(['/login']);
+      this.router.navigate(['/inicio']);
 
     });
   }

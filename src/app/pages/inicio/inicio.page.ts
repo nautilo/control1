@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AnimationController} from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
@@ -20,7 +20,7 @@ export class InicioPage implements OnInit{
   @ViewChild('canvas')
   private canvas!: ElementRef;
 
-  public asistencia: Asignatura = new Asignatura();
+  public asignatura: Asignatura = new Asignatura();
   public escaneando = false;
   public datosQR: string = '';
 
@@ -28,6 +28,7 @@ export class InicioPage implements OnInit{
   //@ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
 
   public usuario: Usuario;
+
 
    constructor(
         private activeroute: ActivatedRoute // Permite obtener los parámetros de la página login
@@ -92,16 +93,42 @@ export class InicioPage implements OnInit{
     if (qrCode) {
       if (qrCode.data !== '') {
         this.escaneando = false;
-        this.mostrarDatosQROrdenados(qrCode.data);
+        this.enviarDatosQR(qrCode.data);
         return true;
       }
     }
     return false;
   }
-
-  public mostrarDatosQROrdenados(datosQR: string): void {
+  
+  public enviarDatosQR(datosQR: string): void {
     this.datosQR = datosQR;
     const objetoDatosQR = JSON.parse(datosQR);
+    console.log(JSON.parse(datosQR)[0]);
+    this.asignatura.setAsignatura(
+      JSON.parse(datosQR)[0],
+      JSON.parse(datosQR)[1],
+      JSON.parse(datosQR)[2],
+      JSON.parse(datosQR)[3],
+      JSON.parse(datosQR)[4],
+      JSON.parse(datosQR)[5],
+      JSON.parse(datosQR)[6],
+      JSON.parse(datosQR)[7],
+      JSON.parse(datosQR)[8],
+      JSON.parse(datosQR)[9]
+    );
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        asignatura: this.asignatura
+      }
+    };
+    this.router.navigate(['/miclase'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
+    // Validamos el usuario y si hay error no navegaremos a la página Home
+    
+      
+
+    }
+  
     // ----------------------------------
     // TAREA PARA COMPLETAR POR EL ALUMNO
     // ----------------------------------
@@ -114,7 +141,7 @@ export class InicioPage implements OnInit{
     // 2) Hacer una interpolación entre las propiedades 
     //    de "this.asistencia" y la página HTML, de modo
     //    que la página muestre de manera ordenada estos datos.
-  }
+
 
   // Si la propiedad this.escaneando cambia a false, entonces la función
   // "verificarVideo" deja de ejecutarse y se detiene el escaneo del QR.
