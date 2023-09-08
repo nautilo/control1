@@ -56,33 +56,6 @@ export class IncorrectoPage implements OnInit {
     //if (this.usuario.correo !== '') this.ingresar();
   }
 
-  public ingresar(): void {
-    
-    if (this.usuario) {
-      
-      // Validamos el usuario y si hay error no navegaremos a la página Home
-      const mensajeError = this.usuario.validarUsuario();
-      if (mensajeError) {
-        this.mostrarMensaje(mensajeError);
-        return;
-      }
-
-      // Como la página sólo permite ingresar el correo y la password, vamos a buscar el usuario para completar sus datos
-      const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.usuario.correo, this.usuario.password);
-      
-      if (usu) {
-        // NavigationExtras sirve para pasarle parámetros a la página Home. Los parámetros se agregan al objeto "state"
-        const navigationExtras: NavigationExtras = {
-          state: {
-            usuario: usu
-          }
-        };
-        this.mostrarMensaje(`¡Bienvenido(a) ${usu.nombreCompleto}!`);
-        this.router.navigate(['/home'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
-      }
-    }
-  }
-
   async mostrarMensaje(mensaje: string, duracion?: number) {
     // Permite mostrar un mensaje emergente que dura unos pocos segundos y desaparece. El mensaje es asincrónico, 
     // los que permite que el mensaje se pueda ver incluso cuando ya ha cambiado a la siguiente página.

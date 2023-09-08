@@ -31,6 +31,10 @@ export class Usuario {
       this.correo = correo;
       this.password = password;
     }
+
+    public setRespuestaSecreta(respuestaSecreta: string): void {
+      this.respuestaSecreta = respuestaSecreta;
+    }
   
     public listaUsuariosValidos(): Usuario[] {
       const lista = [];
@@ -67,6 +71,20 @@ export class Usuario {
     public buscarUsuarioValido(correo: string, password: string): Usuario | undefined {
       const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
         (usu) => usu.correo === correo && usu.password === password
+      );
+      return usuario;
+    }
+
+    public buscarUsuarioPorCorreo(correo:string): Usuario | undefined{
+      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
+        (usu)=> usu.correo === correo
+      );
+      return usuario;
+    }
+
+    public responderPregunta(preguntaSecreta: string, respuestaSecreta: string): Usuario | undefined{
+      const usuario: Usuario | undefined = this.listaUsuariosValidos().find(
+        (usu)=>usu.preguntaSecreta === preguntaSecreta && usu.respuestaSecreta === respuestaSecreta
       );
       return usuario;
     }

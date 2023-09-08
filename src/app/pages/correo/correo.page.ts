@@ -9,7 +9,7 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./correo.page.scss'],
 })
 export class CorreoPage implements OnInit {
-
+ 
   // CGV: La clase typescript "IngresoPage" es la encargada de implementar las reglas de negocio de la página.
   // Las propiedades del archivo typescript pueden intercambiar valores con los elementos HTML, por medio
   // de "Modelo Angular". Por ejemplo, el siguiente TAG se enlaza con la propiedad "usuario.correo":
@@ -35,7 +35,7 @@ export class CorreoPage implements OnInit {
     // hacer tus pruebas y así no tener que digitarlos a cada rato
 
     // this.usuario.setUsuario('sin.datos@duocuc.cl', '1234');
-    this.usuario.setUsuario('atorres@duocuc.cl', '1234');
+    //this.usuario.setUsuario('atorres@duocuc.cl', '1234');
     // this.usuario.setUsuario('jperez@duocuc.cl', '5678');
     // this.usuario.setUsuario('cmujica@duocuc.cl', '0987');
     // this.usuario.setUsuario('usuario.inexistente@duocuc.cl', '1234');
@@ -56,19 +56,14 @@ export class CorreoPage implements OnInit {
     //if (this.usuario.correo !== '') this.ingresar();
   }
 
-  public ingresar(): void {
+  public recuperarContrasena(): void {
     
     if (this.usuario) {
       
       // Validamos el usuario y si hay error no navegaremos a la página Home
-      const mensajeError = this.usuario.validarUsuario();
-      if (mensajeError) {
-        this.mostrarMensaje(mensajeError);
-        return;
-      }
 
       // Como la página sólo permite ingresar el correo y la password, vamos a buscar el usuario para completar sus datos
-      const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.usuario.correo, this.usuario.password);
+      const usu: Usuario | undefined = this.usuario.buscarUsuarioPorCorreo(this.usuario.correo);
       
       if (usu) {
         // NavigationExtras sirve para pasarle parámetros a la página Home. Los parámetros se agregan al objeto "state"
@@ -77,8 +72,7 @@ export class CorreoPage implements OnInit {
             usuario: usu
           }
         };
-        this.mostrarMensaje(`¡Bienvenido(a) ${usu.nombreCompleto}!`);
-        this.router.navigate(['/home'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
+        this.router.navigate(['/pregunta'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
       }
     }
   }

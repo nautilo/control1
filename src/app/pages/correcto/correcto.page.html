@@ -24,7 +24,12 @@
         <ion-card-content>
           <h1>¡Correcto!</h1>
           <h2>Tu contraseña es:</h2>
-            <h2 *ngIf="usuario">{{ usuario.password }}</h2>
+
+          <ion-item>
+            <ion-label class="ion-text-center"><h1 *ngIf="usuario">{{ usuario.password }}</h1></ion-label>
+            
+          </ion-item>
+            
       
         </ion-card-content>
 
