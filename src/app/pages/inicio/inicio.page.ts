@@ -99,56 +99,35 @@ export class InicioPage implements OnInit{
     }
     return false;
   }
-
+  
   public enviarDatosQR(datosQR: string): void {
     this.datosQR = datosQR;
     const objetoDatosQR = JSON.parse(datosQR);
-  
-    if (Array.isArray(objetoDatosQR) && objetoDatosQR.length === 10) {
-      const [
-        sede,
-        idAsignatura,
-        seccion,
-        nombreAsignatura,
-        nombreProfesor,
-        dia,
-        bloqueInicio,
-        bloqueTermino,
-        horaInicio,
-        horaFin
-      ] = objetoDatosQR;
-  
-      this.asignatura.setAsignatura(
-        sede,
-        idAsignatura,
-        seccion,
-        nombreAsignatura,
-        nombreProfesor,
-        dia,
-        bloqueInicio,
-        bloqueTermino,
-        horaInicio,
-        horaFin
-      );
-      const navigationExtras: NavigationExtras = {
-        state: {
-          asignatura: this.asignatura
-        }
-      };
-      this.router.navigate(['/miclase'], navigationExtras); 
-    } else {
-      console.error("El objeto JSON no tiene la estructura esperada.");
-    }
-  }
-  
+    console.log(JSON.parse(datosQR)[0]);
+    this.asignatura.setAsignatura(
+      JSON.parse(datosQR)[0],
+      JSON.parse(datosQR)[1],
+      JSON.parse(datosQR)[2],
+      JSON.parse(datosQR)[3],
+      JSON.parse(datosQR)[4],
+      JSON.parse(datosQR)[5],
+      JSON.parse(datosQR)[6],
+      JSON.parse(datosQR)[7],
+      JSON.parse(datosQR)[8],
+      JSON.parse(datosQR)[9]
+    );
 
-
-// Navegamos hacia el Home y enviamos la información extra
+    const navigationExtras: NavigationExtras = {
+      state: {
+        asignatura: this.asignatura
+      }
+    };
+    this.router.navigate(['/miclase'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
     // Validamos el usuario y si hay error no navegaremos a la página Home
     
       
 
-
+    }
   
     // ----------------------------------
     // TAREA PARA COMPLETAR POR EL ALUMNO

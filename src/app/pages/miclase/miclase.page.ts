@@ -44,6 +44,7 @@ export class MiclasePage implements OnInit{
     });
   }
 
+
   public ngOnInit(): void {
 
   }
