@@ -104,18 +104,7 @@ export class InicioPage implements OnInit{
     this.datosQR = datosQR;
     const objetoDatosQR = JSON.parse(datosQR);
     console.log(JSON.parse(datosQR)[0]);
-    this.asignatura.setAsignatura(
-      JSON.parse(datosQR)[0],
-      JSON.parse(datosQR)[1],
-      JSON.parse(datosQR)[2],
-      JSON.parse(datosQR)[3],
-      JSON.parse(datosQR)[4],
-      JSON.parse(datosQR)[5],
-      JSON.parse(datosQR)[6],
-      JSON.parse(datosQR)[7],
-      JSON.parse(datosQR)[8],
-      JSON.parse(datosQR)[9]
-    );
+    this.asignatura = objetoDatosQR;
 
     const navigationExtras: NavigationExtras = {
       state: {
