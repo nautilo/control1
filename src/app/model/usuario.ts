@@ -110,7 +110,7 @@ export class Usuario {
   
     public validarCredenciales(): string {
       const usu: Usuario | undefined = this.buscarUsuarioValido(this.correo, this.password);
-      return usu ? '' : 'El usuario no fue encontrado en el sistema.';
+      return usu ? '' : 'Ingresaste un correo o una contraseña errónea.';
     }
   
     public validarUsuario(): string {

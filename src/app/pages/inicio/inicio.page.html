@@ -1,7 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title #titulo><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
+    <div style="display: flex; align-items: center;">
+      <img class="logo" src="../../../assets/img/logo-duoc.svg">
+      <ion-title #titulo style="flex-grow: 1;">
+        <p>Sistema de asistencia Duoc UC</p>
+      </ion-title>
+    </div>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>
@@ -13,9 +19,7 @@
     Ver: https://ionicframework.com/docs/layout/css-utilities#text-alignment
     Ver: https://ionicframework.com/docs/layout/css-utilities#element-padding
   -->
-  <ion-title class="ion-padding-top ion-text-center">
-    <h1>Sistema de asistencia Duoc UC</h1>
-  </ion-title>
+
   
   <!--
     Se genera una división donde estará el contenido del login,
@@ -33,9 +37,9 @@
       <!-- Título del card -->
       <ion-card-title class="ion-text-center">
         <ion-label>
-          <h1>¡Bienvenido!</h1>
+          <h1 #itemBienvenido>¡Bienvenido!</h1>
           <br>
-          <h1 *ngIf="usuario">{{ usuario.nombreCompleto }}</h1>
+          <h1 #itemNombre *ngIf="usuario">{{ usuario.nombreCompleto }}</h1>
           <br>
           <h2>Escanea el código QR para registrar tu asistencia a clases</h2>
         </ion-label>

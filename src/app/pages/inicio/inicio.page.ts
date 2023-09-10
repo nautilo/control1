@@ -13,7 +13,11 @@ import jsQR, { QRCode } from 'jsqr';
 })
 
 export class InicioPage implements OnInit{
+  @ViewChild('titulo',{read:ElementRef}) itemTitulo!: ElementRef;
   
+  @ViewChild('itemNombre',{read:ElementRef}) itemNombre!: ElementRef;
+  @ViewChild('itemBienvenido', { read: ElementRef }) itemBienvenido!: ElementRef;
+
   @ViewChild('video')
   private video!: ElementRef;
 
@@ -142,32 +146,49 @@ export class InicioPage implements OnInit{
 
 
 
-  // public ngAfterViewInit(): void {
-  //   if (this.itemTitulo) {
-  //     const animation = this.animationController
-  //       .create()
-  //       .addElement(this.itemTitulo.nativeElement)
-  //       .iterations(Infinity)
-  //       .duration(6000)
-  //       .fromTo('transform', 'translate(0%)', 'translate(100%)')
-  //       .fromTo('opacity', 0.2, 1);
+  public ngAfterViewInit(): void {
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(-20%)', 'translate(100%)')
+        .fromTo('opacity', 0, 1);
 
-  //     animation.play();
-  //   }
-  // }
+      animation.play();
+    }
+
+    this.animateItem(this.itemBienvenido.nativeElement);
+    this.animateItem(this.itemNombre.nativeElement);
+  }
 
  
 
   public animateItem(elementRef: any) {
-    this.animationController
+    // Crear la animación de enfoque (opacity)
+    const focusAnimation = this.animationController
       .create()
       .addElement(elementRef)
       .iterations(1)
-      .duration(600)
-      .fromTo('transform', 'translate(100%)', 'translate(0%)')
-      .play();
+      .duration(1500)
+      .fromTo('opacity', 0, 1);
+  
+    // Crear la animación de flotar hacia arriba (translateY)
+    const floatUpAnimation = this.animationController
+      .create()
+      .addElement(elementRef)
+      .iterations(1)
+      .duration(1500)
+      .fromTo('transform', 'translateY(50px)', 'translateY(0px)'); // Cambia -50px según la distancia que desees
+  
+    // Combinar las dos animaciones en un grupo
+    const animationGroup = this.animationController.create()
+      .addAnimation([focusAnimation, floatUpAnimation]);
+  
+    animationGroup.play();
   }
-
+  
   // Este método sirve para mostrar un mensaje emergente
   public async presentAlert(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({
