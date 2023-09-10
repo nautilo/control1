@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title #titulo><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
+    <ion-title><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,8 +9,7 @@
     <h1>Sistema de asistencia Duoc UC</h1>
   </ion-title>
   
-  <div class="ion-padding-vertical">
-    
+  <div class="ion-padding-vertical"> 
     <ion-card class="ion-text-center ion-padding-vertical">
 
       <ion-card-title class="ion-text-center">
@@ -22,7 +21,6 @@
 
       <form>
         <ion-card-content>
-          
           <ion-item>
             <ion-input name="correo" label="Correo" labelPlacement="floating" type="text" [(ngModel)]="usuario.correo"></ion-input>
           </ion-item>
@@ -31,15 +29,13 @@
           </div>
         </ion-card-content>
       </form>
-      
 
     </ion-card>
-    <div class="ion-text-center">
-    <ion-label>
-      <br>
-      <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
-    </ion-label>
+      <div class="ion-text-center">
+        <ion-label>
+          <br>
+          <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
+        </ion-label>
+      </div>
   </div>
-  </div>
-  
 </ion-content>

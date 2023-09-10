@@ -103,7 +103,7 @@ export class Usuario {
         return 'Para entrar al sistema debe ingresar una contraseña.';
       }
       if (this.password.length !== 4) {
-        return 'La contraseña debe tener cuatro caracteres máximo.';
+        return 'La contraseña debe tener cuatro caracteres.';
       }
       return '';
     }

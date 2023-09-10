@@ -14,55 +14,38 @@ import jsQR, { QRCode } from 'jsqr';
 
 export class InicioPage implements OnInit{
   @ViewChild('titulo',{read:ElementRef}) itemTitulo!: ElementRef;
-  
   @ViewChild('itemNombre',{read:ElementRef}) itemNombre!: ElementRef;
   @ViewChild('itemBienvenido', { read: ElementRef }) itemBienvenido!: ElementRef;
-
-  @ViewChild('video')
-  private video!: ElementRef;
-
-  @ViewChild('canvas')
-  private canvas!: ElementRef;
+  @ViewChild('video') private video!: ElementRef;
+  @ViewChild('canvas') private canvas!: ElementRef;
 
   public asignatura: Asignatura = new Asignatura();
   public escaneando = false;
   public datosQR: string = '';
 
-
-  //@ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
-
   public usuario: Usuario;
 
-
    constructor(
-        private activeroute: ActivatedRoute // Permite obtener los parámetros de la página login
-      , private router: Router // Permite navegar entre páginas
-      , private alertController: AlertController // Permite mostrar mensajes emergentes más complejos que Toast
-      , private animationController: AnimationController) { // Permite crear animaciones con  
+        private activeroute: ActivatedRoute
+      , private router: Router
+      , private alertController: AlertController
+      , private animationController: AnimationController) {
 
     this.usuario = new Usuario('', '', '', '', '');
 
-    // Se llama a la ruta activa y se obtienen sus parámetros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { 
-
       const nav = this.router.getCurrentNavigation();
       if (nav) {
-        // Si tiene datos extra, se rescatan y se asignan a una propiedad
         if (nav.extras.state) {
           this.usuario = nav.extras.state['usuario'];
           return;
         }
       }
-      // Si no vienen datos extra desde la página anterior, quiere decir que el usuario
-      // intentó entrar directamente a la página home sin pasar por el login,
-      // de modo que el sistema debe enviarlo al login para que inicie sesión.
       this.router.navigate(['/ingreso']);
-
     });
   }
 
   public ngOnInit(): void {
-
   }
 
   public async comenzarEscaneoQR() {
@@ -112,39 +95,16 @@ export class InicioPage implements OnInit{
 
     const navigationExtras: NavigationExtras = {
       state: {
-        asignatura: this.asignatura
+        asignatura: this.asignatura,
+        usuario: this.usuario
       }
     };
-    this.router.navigate(['/miclase'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
-    // Validamos el usuario y si hay error no navegaremos a la página Home
-    
-      
-
-    }
-  
-    // ----------------------------------
-    // TAREA PARA COMPLETAR POR EL ALUMNO
-    // ----------------------------------
-    // 1) Ejecutar el setter de la clase Asistencia:
-    //     this.asistencia.setAsistencia(...parametros...)
-    //    de modo que los parámetros los tome del objeto datosQR,
-    //    por ejemplo: datosQR.nombreAsignatura contiene el valor 
-    //    del nombre de la asignatura en la cual el alumno
-    //    debe quedar presente.
-    // 2) Hacer una interpolación entre las propiedades 
-    //    de "this.asistencia" y la página HTML, de modo
-    //    que la página muestre de manera ordenada estos datos.
-
-
-  // Si la propiedad this.escaneando cambia a false, entonces la función
-  // "verificarVideo" deja de ejecutarse y se detiene el escaneo del QR.
+    this.router.navigate(['/miclase'], navigationExtras);
+  }
 
   public detenerEscaneoQR(): void {
     this.escaneando = false;
   }
-
-
-
 
   public ngAfterViewInit(): void {
     if (this.itemTitulo) {
@@ -158,45 +118,37 @@ export class InicioPage implements OnInit{
 
       animation.play();
     }
-
     this.animateItem(this.itemBienvenido.nativeElement);
     this.animateItem(this.itemNombre.nativeElement);
   }
 
- 
-
   public animateItem(elementRef: any) {
-    // Crear la animación de enfoque (opacity)
-    const focusAnimation = this.animationController
+    const disolverAnimation = this.animationController
       .create()
       .addElement(elementRef)
       .iterations(1)
       .duration(1500)
       .fromTo('opacity', 0, 1);
   
-    // Crear la animación de flotar hacia arriba (translateY)
-    const floatUpAnimation = this.animationController
+    const subirAnimation = this.animationController
       .create()
       .addElement(elementRef)
       .iterations(1)
       .duration(1500)
-      .fromTo('transform', 'translateY(50px)', 'translateY(0px)'); // Cambia -50px según la distancia que desees
+      .fromTo('transform', 'translateY(50px)', 'translateY(0px)');
   
-    // Combinar las dos animaciones en un grupo
     const animationGroup = this.animationController.create()
-      .addAnimation([focusAnimation, floatUpAnimation]);
+      .addAnimation([disolverAnimation, subirAnimation]);
   
     animationGroup.play();
   }
   
-  // Este método sirve para mostrar un mensaje emergente
   public async presentAlert(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({
       header: titulo,
       message: mensaje,
       buttons: ['OK']
     });
-
     await alert.present();
   }
 }

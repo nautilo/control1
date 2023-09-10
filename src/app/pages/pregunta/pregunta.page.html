@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title #titulo><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
+    <ion-title><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,9 +10,7 @@
   </ion-title>
   
   <div class="ion-padding-vertical">
-    
     <ion-card class="ion-text-center ion-padding-vertical">
-
       <ion-card-title class="ion-text-center">
         <ion-label>
           <h1>Recuperar contraseña</h1>
@@ -23,7 +21,6 @@
 
       <form>
         <ion-card-content>
-          
           <ion-item>
             <ion-label class="ion-text-center"><h2 *ngIf="usuario">{{ usuario.preguntaSecreta }}</h2></ion-label>
           </ion-item>
@@ -35,15 +32,13 @@
           </div>
         </ion-card-content>
       </form>
-      
-
     </ion-card>
+    
     <div class="ion-text-center">
-    <ion-label>
-      <br>
-      <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
-    </ion-label>
+      <ion-label>
+        <br>
+        <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
+      </ion-label>
+    </div>
   </div>
-  </div>
-  
 </ion-content>

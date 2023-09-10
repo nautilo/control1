@@ -10,38 +10,26 @@
   </ion-title>
   
   <div class="ion-padding-vertical">
-    
     <ion-card class="ion-text-center ion-padding-vertical">
-
       <ion-card-title class="ion-text-center">
         <ion-label>
           <h1>Recuperar contraseña</h1>
           <img class="img-correcto" src="../../../assets/img/correcto.png">
         </ion-label>
       </ion-card-title>
-
-
         <ion-card-content>
           <h1>¡Correcto!</h1>
           <h2>Tu contraseña es:</h2>
-
           <ion-item>
-            <ion-label class="ion-text-center"><h1 *ngIf="usuario">{{ usuario.password }}</h1></ion-label>
-            
+            <ion-label class="ion-text-center"><h1 *ngIf="usuario">{{ usuario.password }}</h1></ion-label>  
           </ion-item>
-            
-      
         </ion-card-content>
-
-      
-
     </ion-card>
     <div class="ion-text-center">
     <ion-label>
       <br>
       <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
     </ion-label>
+    </div>
   </div>
-  </div>
-  
 </ion-content>
