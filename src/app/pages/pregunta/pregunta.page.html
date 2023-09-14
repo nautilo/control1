@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-title class="ion-padding-top ion-text-center">
-    <h1>Sistema de asistencia Duoc UC</h1>
+    <h1 class="titulo">Sistema de asistencia Duoc UC</h1>
   </ion-title>
   
   <div class="ion-padding-vertical">
@@ -22,7 +22,7 @@
       <form>
         <ion-card-content>
           <ion-item>
-            <ion-label class="ion-text-center"><h2 *ngIf="usuario">{{ usuario.preguntaSecreta }}</h2></ion-label>
+            <ion-label class="ion-text-center"><h2 *ngIf="usuario" style="color:black">{{ usuario.preguntaSecreta }}</h2></ion-label>
           </ion-item>
           <ion-item>
             <ion-input name="respuesta" label="Escribe aquí tu respuesta" labelPlacement="floating" type="text" [(ngModel)]="usuario.respuestaSecreta"></ion-input>
@@ -37,7 +37,7 @@
     <div class="ion-text-center">
       <ion-label>
         <br>
-        <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
+        <ion-button shape="round" routerLink="/ingreso" style="max-width: 190px; font-size: 12px;">Iniciar sesión</ion-button>
       </ion-label>
     </div>
   </div>

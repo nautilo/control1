@@ -12,7 +12,7 @@ import { Usuario } from 'src/app/model/usuario';
 })
 
 export class MiclasePage implements OnInit{
-
+  @ViewChild('titulo',{read:ElementRef}) itemTitulo!: ElementRef;
   public asignatura: Asignatura;
   public usuario: Usuario;
 
@@ -41,15 +41,31 @@ export class MiclasePage implements OnInit{
   public ngOnInit(): void {
   }
 
-  public animateItem(elementRef: any) {
-    this.animationController
-      .create()
-      .addElement(elementRef)
-      .iterations(1)
-      .duration(600)
-      .fromTo('transform', 'translate(100%)', 'translate(0%)')
-      .play();
+  public irInicio(): void {
+    if (this.usuario) {
+      const navigationExtras: NavigationExtras = {
+        state: {
+          usuario: this.usuario
+        }
+      };
+      this.router.navigate(['/inicio'], navigationExtras);
+    }
   }
+
+  public ngAfterViewInit(): void {
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(-30%)', 'translate(100%)')
+        .fromTo('opacity', 0, 1);
+
+      animation.play();
+    }
+  }
+
 
   public async presentAlert(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({

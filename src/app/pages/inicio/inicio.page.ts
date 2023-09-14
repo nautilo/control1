@@ -113,7 +113,7 @@ export class InicioPage implements OnInit{
         .addElement(this.itemTitulo.nativeElement)
         .iterations(Infinity)
         .duration(6000)
-        .fromTo('transform', 'translate(-20%)', 'translate(100%)')
+        .fromTo('transform', 'translate(-30%)', 'translate(100%)')
         .fromTo('opacity', 0, 1);
 
       animation.play();

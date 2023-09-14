@@ -1,3 +1,6 @@
+h1, h2, h3, p{
+    color:white;
+}
 ion-content{
     --background: url("../../../assets/img/background.jpg") no-repeat center center / cover;
 }
@@ -23,4 +26,9 @@ ion-button{
 .recuperar-contrasena{
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.titulo{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-top: 50px;
+    font-size: 22px;
 }

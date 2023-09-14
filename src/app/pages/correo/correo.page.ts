@@ -21,6 +21,13 @@ export class CorreoPage implements OnInit {
 
   public recuperarContrasena(): void {
     if (this.usuario) {
+      const mensajeError = this.usuario.validarCorreo();
+      if (mensajeError) {
+        this.mostrarMensaje(mensajeError);
+        return;
+      } else {
+        this.router.navigate(['/incorrecto']);
+      }
       const usu: Usuario | undefined = this.usuario.buscarUsuarioPorCorreo(this.usuario.correo);
       
       if (usu) {

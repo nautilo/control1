@@ -3,13 +3,17 @@
     <div style="display: flex; align-items: center;">
       <img class="logo" src="../../../assets/img/logo-duoc.svg">
       <ion-title #titulo style="flex-grow: 1;">
-        <p>Sistema de asistencia Duoc UC</p>
+        <p class="titulo-animado">Sistema de asistencia Duoc UC</p>
       </ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="contenedor">
+  <br>
+  <br>
+  <br>
+  <br>
   <ion-card class="tabs">
     <a routerLink="/inicio"><div class="tab-button-active">Inicio</div></a>
     <a routerLink="/miclase"><div class="tab-button-inactive">Mi clase</div></a>
@@ -49,7 +53,7 @@
     <div class="ion-text-center">
       <ion-label>
         <br>
-        <a class="cerrar-sesion" routerLink="/ingreso">Cerrar sesión</a>
+        <ion-button shape="round" routerLink="/ingreso" style="max-width: 190px; font-size: 12px;">Cerrar sesión</ion-button>
       </ion-label>
     </div>
   </div>

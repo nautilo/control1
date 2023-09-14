@@ -51,6 +51,8 @@ export class PreguntaPage implements OnInit {
       }else{
         this.router.navigate(['/incorrecto']);
       }
+    }else{
+      this.mostrarMensaje("No has ingresado la respuesta.");
     }
   }
 

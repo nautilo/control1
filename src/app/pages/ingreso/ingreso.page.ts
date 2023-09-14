@@ -14,7 +14,6 @@ export class IngresoPage implements OnInit {
   
   constructor(private router: Router, private toastController: ToastController) {
     this.usuario = new Usuario('', '', '', '', '');
-    this.usuario.setUsuario('atorres@duocuc.cl', '1234');
   }
 
   public ngOnInit(): void {

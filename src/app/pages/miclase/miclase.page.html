@@ -1,70 +1,122 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title #titulo><img class="logo" src="../../../assets/img/logo-duoc.svg"></ion-title>
+    <div style="display: flex; align-items: center;">
+      <img class="logo" src="../../../assets/img/logo-duoc.svg">
+      <ion-title #titulo style="flex-grow: 1;">
+        <p class="titulo-animado">Sistema de asistencia Duoc UC</p>
+      </ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-title class="ion-padding-top ion-text-center">
-    <h1>Sistema de asistencia Duoc UC</h1>
+    <h1 class="titulo">Sistema de asistencia Duoc UC</h1>
   </ion-title>
 
   <ion-card class="tabs">
-    <a routerLink="/inicio"><div class="tab-button-inactive">Inicio</div></a>
-    <a routerLink="/miclase"><div class="tab-button-active">Mi clase</div></a>
+    <a (click)="irInicio()"><div class="tab-button-inactive">Inicio</div></a>
+    <div class="tab-button-active">Mi clase</div>
   </ion-card>
 
   <div class="ion-padding-vertical">
     <ion-card class="ion-text-center ion-padding-vertical">
       <ion-card-title class="ion-text-center">
         <ion-label>
-          <h1>¡Bienvenido!</h1>
-          <br>
-          <h1>{{ asignatura.sede }}</h1>
-          <br>
+          <h1>Datos de la asignatura</h1>
         </ion-label>
       </ion-card-title>
 
         <ion-card-content>
-          <ion-list>
-            <ion-item>
-              Sede: {{ asignatura.sede }}
-            </ion-item>
-            <ion-item>
-              ID de la Asignatura: {{ asignatura.idAsignatura }}
-            </ion-item>
-            <ion-item>
-              Sección: {{ asignatura.seccion }}
-            </ion-item>
-            <ion-item>
-              Nombre de la Asignatura: {{ asignatura.nombreAsignatura }}
-            </ion-item>
-            <ion-item>
-              Nombre del Profesor: {{ asignatura.nombreProfesor }}
-            </ion-item>
-            <ion-item>
-              Día: {{ asignatura.dia }}
-            </ion-item>
-            <ion-item>
-              Bloque Inicio: {{ asignatura.bloqueInicio }}
-            </ion-item>
-            <ion-item>
-              Bloque Término: {{ asignatura.bloqueTermino }}
-            </ion-item>
-            <ion-item>
-              Hora de Inicio: {{ asignatura.horaInicio }}
-            </ion-item>
-            <ion-item>
-              Hora de Fin: {{ asignatura.horaFin }}
-            </ion-item>
-          </ion-list>
+          <ion-grid class="tabla">
+            <ion-row>
+              <ion-col>
+                Sede:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.sede }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                ID de la Asignatura:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.idAsignatura }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Sección:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.seccion }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Nombre de la Asignatura:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.nombreAsignatura }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Nombre del Profesor:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.nombreProfesor }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Día:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.dia }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Bloque Inicio:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.bloqueInicio }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Bloque Término:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.bloqueTermino }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Hora de Inicio:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.horaInicio }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Hora de Fin:
+              </ion-col>
+              <ion-col>
+                {{ asignatura.horaFin }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card-content>
     </ion-card>
 
     <div class="ion-text-center">
       <ion-label>
         <br>
-        <a class="cerrar-sesion" routerLink="/ingreso">Cerrar sesión</a>
+        <ion-button shape="round" routerLink="/ingreso" style="max-width: 190px; font-size: 12px;">Cerrar sesión</ion-button>
       </ion-label>
     </div>
   </div> 

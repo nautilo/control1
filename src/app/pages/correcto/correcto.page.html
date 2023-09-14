@@ -6,29 +6,29 @@
 
 <ion-content>
   <ion-title class="ion-padding-top ion-text-center">
-    <h1>Sistema de asistencia Duoc UC</h1>
+    <h1 class="titulo">Sistema de asistencia Duoc UC</h1>
   </ion-title>
   
   <div class="ion-padding-vertical">
     <ion-card class="ion-text-center ion-padding-vertical">
       <ion-card-title class="ion-text-center">
         <ion-label>
-          <h1>Recuperar contraseña</h1>
-          <img class="img-correcto" src="../../../assets/img/correcto.png">
+          <h2>Recuperar contraseña</h2>
+          <img class="img-correcto" src="../../../assets/img/correcto.jpg">
         </ion-label>
       </ion-card-title>
         <ion-card-content>
           <h1>¡Correcto!</h1>
           <h2>Tu contraseña es:</h2>
           <ion-item>
-            <ion-label class="ion-text-center"><h1 *ngIf="usuario">{{ usuario.password }}</h1></ion-label>  
+            <ion-label class="ion-text-center"><h1 style="color:black;"*ngIf="usuario">{{ usuario.password }}</h1></ion-label>  
           </ion-item>
         </ion-card-content>
     </ion-card>
     <div class="ion-text-center">
     <ion-label>
       <br>
-      <a class="recuperar-contrasena" routerLink="">Iniciar sesión</a>
+      <ion-button shape="round" routerLink="/ingreso" style="max-width: 190px; font-size: 12px;">Iniciar sesión</ion-button>
     </ion-label>
     </div>
   </div>
