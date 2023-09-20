@@ -2,12 +2,13 @@ h1,h2{
     color: white;
 }
 .titulo{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     margin-top: 50px;
     font-size: 22px;
 }
+
 ion-content{
-    --background: url("../../../assets/img/background.jpg") no-repeat center center / cover;
+    --background: url("../../../assets/img/correcto.jpg") no-repeat center center / cover;
 }
 ion-toolbar {
     text-align: center;
@@ -35,6 +36,9 @@ ion-button{
 .img-correcto{
     max-width: 220px;
     border-radius: 10px;
+}
+.contenedor{
+    margin-top: 60%;
 }
 
 

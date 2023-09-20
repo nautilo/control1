@@ -88,10 +88,11 @@ export class Usuario {
       );
       return usuario;
     }
-  
+
     public validarCorreo(): string {
       const patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (patronCorreo.test(this.correo)) {
+      const lastCharacter = parseInt(this.correo.charAt(this.correo.length - 1), 10);
+      if (patronCorreo.test(this.correo) || !isNaN(lastCharacter)) {
         return '';
       } else {
         return 'El correo ingresado no tiene un formato válido.';
