@@ -1,10 +1,14 @@
 h1, h2, h3, p{
     color:white;
 }
+.titulo{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+    font-size: 22px;
+}
 a{
     text-decoration: none;
 }
-
 ion-content{
     --background: url("../../../assets/img/background.jpg") no-repeat center center / cover;
 }
@@ -14,7 +18,6 @@ ion-toolbar {
 }
 ion-card{
     --background: rgba(0,0,0,0.5);
-    border-top-left-radius: 0px;
 }
 ion-button{
     --background: #F1B634;
@@ -46,10 +49,14 @@ ion-button{
     color: #2c2c2c;
     padding:15px;
 }
-
-.subirQR{
-    color: black;
-}
 .titulo-animado{
     font-size: 12px;
+}
+.tabla{
+    background-color: white;
+    color: black;
+    text-align: start;
+}
+ion-row{
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
